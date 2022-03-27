@@ -188,10 +188,10 @@ input[type="radio"] {
 }
 
 [value="All"]:checked ~ .filters [for="All"],
-[value="python"]:checked ~ .filters [for="python"],
+[value="Python"]:checked ~ .filters [for="Python"],
 [value="R"]:checked ~ .filters [for="R"],
 [value="SQL"]:checked ~ .filters [for="SQL"],
-[value="visualization"]:checked ~ .filters [for="visualization"],
+[value="Visualization"]:checked ~ .filters [for="Visualization"],
 [value="Econometrics"]:checked ~ .filters [for="Econometrics"],
 [value="NLP"]:checked ~ .filters [for="NLP"] {
   background: var(--purple);
@@ -202,10 +202,10 @@ input[type="radio"] {
   display: block;
 }
 
-[value="python"]:checked ~ .projects .project:not([data-category~="python"]),
+[value="Python"]:checked ~ .projects .project:not([data-category~="Python"]),
 [value="R"]:checked ~ .projects .project:not([data-category~="R"]),
 [value="SQL"]:checked ~ .projects .project:not([data-category~="SQL"]),
-[value="visualization"]:checked ~ .projects .project:not([data-category~="visualization"]),
+[value="Visualization"]:checked ~ .projects .project:not([data-category~="Visualization"]),
 [value="Econometrics"]:checked ~ .projects .project:not([data-category~="Econometrics"]),
 [value="NLP"]:checked ~ .projects .project:not([data-category~="NLP"]) {
   display: none;
