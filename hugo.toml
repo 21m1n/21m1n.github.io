@@ -4,8 +4,8 @@ title = 'De Onmibus Dubitaddum'
 theme = 'PaperMod'
 
 [params.homeInfoParams]
-Title = "Hi there wave"
-Content = "Can be Info, links, about..."
+Title = "Hi there 👋"
+Content = "My name is Zimin, and I talk about #tech, #films, #life"
 
 [[params.socialIcons]]
 name = "<platform>"
