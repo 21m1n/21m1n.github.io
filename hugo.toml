@@ -1,6 +1,6 @@
 baseURL = 'https://ziminds.com/'
 languageCode = 'en-us'
-title = 'De Onmibus Dubitandum'
+title = 'De Omnibus Dubitandum'
 theme = 'PaperMod'
 
 [params.homeInfoParams]
