@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>De Omnibus Dubitandum</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on De Omnibus Dubitandum</description>
+    <generator>Hugo -- 0.142.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Apr 2025 07:19:42 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Asyncio in Python</title>
+      <link>http://localhost:1313/posts/asyncio/</link>
+      <pubDate>Sun, 06 Apr 2025 07:19:42 +0800</pubDate>
+      <guid>http://localhost:1313/posts/asyncio/</guid>
+      <description>&lt;p&gt;With the advent of large language models (LLMs), asynchronous programming has become a critical skill in AI application development. When working with these computationally intensive models, developers face two key challenges: LLMs are typically served via network endpoints, introducing significant latency that can severely impact application responsiveness. This is where asynchronous programming shine.&lt;/p&gt;
+&lt;p&gt;Unlike traditional synchronous programming, where operations execute sequentially and block until completion, asynchronous programming allows applications to continue processing CPU-bound operations while waiting for I/O-bound responses in the background. This approach not only maximuizes computational resource utilization but also dramatically improves user experiences by keep applications responsive, even when interacting with resource-intensive services like LLMs.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
