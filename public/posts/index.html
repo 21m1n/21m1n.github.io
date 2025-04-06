@@ -1,9 +1,62 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Posts | De Omnibus Dubitandum</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - De Omnibus Dubitandum">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
 </head>
 
 <body class="list" id="top">
@@ -58,28 +111,16 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Asyncio
+    <h2 class="entry-hint-parent">Asyncio in Python
     </h2>
   </header>
   <div class="entry-content">
-    <p>In the era of large language models and AI applications, handling concurrent operations efficiently has become more crucial than ever. Inefficient handling can severely impact application performance and user experience - a 500ms delay in API response can cascade into multi-second waits for end users. In AI applications, this is particularly critical when managing multiple LLM interactions, such as real-time inferences, and so on. Python offers several approaches to handle concurrent operations, including threading, multiprocessing, and asynchronous I/O. While threading works well for I/O-bound tasks and multiprocessing suits CPU-intensive operations, asyncio provides an elegant solution specifically designed for managing parallel operations efficiently. Asyncio particularly shines in LLM applications by enabling non-blocking API calls, efficient stream processing, and responsive user interactions. Without async capabilities, these operations would block each other, creating noticeable delays and degrading user experience. Asyncio provides Python developers the tools to manage these parallel operations efficiently, enabling smooth interaction with LLMs while maximizing system resources.
+    <p>With the advent of large language models (LLMs), asynchronous programming has become a critical skill in AI application development. When working with these computationally intensive models, developers face two key challenges: LLMs are typically served via network endpoints, introducing significant latency that can severely impact application responsiveness. This is where asynchronous programming shine.
+Unlike traditional synchronous programming, where operations execute sequentially and block until completion, asynchronous programming allows applications to continue processing CPU-bound operations while waiting for I/O-bound responses in the background. This approach not only maximuizes computational resource utilization but also dramatically improves user experiences by keep applications responsive, even when interacting with resource-intensive services like LLMs.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-01-31 07:19:42 +0800 +08'>January 31, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Asyncio" href="http://localhost:1313/posts/asyncio/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Understanding DSPy
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>One of the main challenges we face while developing AI applications is prompt engineering. As developers, we often find ourselves in a cycle of trial and error: writing a prompt, testing it against various inputs, analyzing the outputs, and then tweaking the prompt based on the results. This iterative process requires meticulous tracking of prompt versions, understanding how different phrasings affect model behavior, and maintaining consistency across similar tasks. Managing this complexity becomes even more challenging when we need to chain multiple prompts together or handle different edge cases. This approach, while workable for simple applications, becomes increasingly unsustainable as applications grow in complexity.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-01-30 23:46:40 +0800 +08'>January 30, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Understanding DSPy" href="http://localhost:1313/posts/my-new-post/"></a>
+  <footer class="entry-footer"><span title='2025-04-06 07:19:42 +0800 +08'>April 6, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Asyncio in Python" href="http://localhost:1313/posts/asyncio/"></a>
 </article>
     </main>
     
