@@ -15,7 +15,16 @@ url = "<link>"
 name = "<platform 2>"
 url = "<link2>"
 
+
 [outputs]
 home = [ "HTML", "RSS", "JSON" ]
 
+[params.assets]
+disableHLJS = true
 
+[markup]
+  [markup.highlight]
+    style = "dracula"
+    lineNos = false
+    noClasses = true
+    codeFences = true

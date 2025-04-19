@@ -57,6 +57,9 @@ Unlike traditional synchronous programming, where operations execute sequentiall
 
     </style>
 </noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral+SC:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 </head>
 
 <body class="" id="top">
@@ -206,178 +209,178 @@ Unlike traditional synchronous programming, where operations execute sequentiall
 </ul>
 <h2 id="synchronous-vs-asynchronous">Synchronous vs. Asynchronous<a hidden class="anchor" aria-hidden="true" href="#synchronous-vs-asynchronous">#</a></h2>
 <p>To understand why asynchronous programming is so valuable for LLM applications, let&rsquo;s compare how synchronous and asynchronous approaches handle multiple operations. The difference becomes particularly significant when dealing with I/O-bound tasks like API calls to LLM services:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># simple benchmark comparing sync vs async approaches</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># simple benchmark comparing sync vs async approaches</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> time
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># synchronous approach</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sync_fetch</span>(url):
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># simulate network delay</span>
-</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)  
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Data from </span><span style="color:#e6db74">{</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># synchronous approach</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">sync_fetch</span>(url):
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># simulate network delay</span>
+</span></span><span style="display:flex;"><span>    time<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>)  
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Data from </span><span style="color:#f1fa8c">{</span>url<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sync_main</span>():
-</span></span><span style="display:flex;"><span>    start <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
-</span></span><span style="display:flex;"><span>    results <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># process URLs sequentially</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>):
-</span></span><span style="display:flex;"><span>        results<span style="color:#f92672">.</span>append(sync_fetch(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;url_</span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>))
-</span></span><span style="display:flex;"><span>    end <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Sync approach took </span><span style="color:#e6db74">{</span>end<span style="color:#f92672">-</span>start<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> results
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">sync_main</span>():
+</span></span><span style="display:flex;"><span>    start <span style="color:#ff79c6">=</span> time<span style="color:#ff79c6">.</span>time()
+</span></span><span style="display:flex;"><span>    results <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># process URLs sequentially</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">5</span>):
+</span></span><span style="display:flex;"><span>        results<span style="color:#ff79c6">.</span>append(sync_fetch(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;url_</span><span style="color:#f1fa8c">{</span>i<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>))
+</span></span><span style="display:flex;"><span>    end <span style="color:#ff79c6">=</span> time<span style="color:#ff79c6">.</span>time()
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Sync approach took </span><span style="color:#f1fa8c">{</span>end<span style="color:#ff79c6">-</span>start<span style="color:#f1fa8c">:</span><span style="color:#f1fa8c">.2f</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> seconds&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> results
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># asynchronous approach</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">async_fetch</span>(url):
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Simulate network delay without blocking</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)  
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Data from </span><span style="color:#e6db74">{</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># asynchronous approach</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">async_fetch</span>(url):
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># Simulate network delay without blocking</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>)  
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Data from </span><span style="color:#f1fa8c">{</span>url<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">async_main</span>():
-</span></span><span style="display:flex;"><span>    start <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># initiate all requests concurrently</span>
-</span></span><span style="display:flex;"><span>    tasks <span style="color:#f92672">=</span> [async_fetch(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;url_</span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>)]
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Wait for all to complete</span>
-</span></span><span style="display:flex;"><span>    results <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>gather(<span style="color:#f92672">*</span>tasks)
-</span></span><span style="display:flex;"><span>    end <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Async approach took </span><span style="color:#e6db74">{</span>end<span style="color:#f92672">-</span>start<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> results
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">async_main</span>():
+</span></span><span style="display:flex;"><span>    start <span style="color:#ff79c6">=</span> time<span style="color:#ff79c6">.</span>time()
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># initiate all requests concurrently</span>
+</span></span><span style="display:flex;"><span>    tasks <span style="color:#ff79c6">=</span> [async_fetch(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;url_</span><span style="color:#f1fa8c">{</span>i<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>) <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">5</span>)]
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># Wait for all to complete</span>
+</span></span><span style="display:flex;"><span>    results <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>gather(<span style="color:#ff79c6">*</span>tasks)
+</span></span><span style="display:flex;"><span>    end <span style="color:#ff79c6">=</span> time<span style="color:#ff79c6">.</span>time()
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Async approach took </span><span style="color:#f1fa8c">{</span>end<span style="color:#ff79c6">-</span>start<span style="color:#f1fa8c">:</span><span style="color:#f1fa8c">.2f</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> seconds&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> results
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run both approaches</span>
-</span></span><span style="display:flex;"><span>sync_results <span style="color:#f92672">=</span> sync_main()  <span style="color:#75715e"># Takes ~5 seconds</span>
-</span></span><span style="display:flex;"><span>async_results <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>run(async_main())  <span style="color:#75715e"># Takes ~1 second</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Run both approaches</span>
+</span></span><span style="display:flex;"><span>sync_results <span style="color:#ff79c6">=</span> sync_main()  <span style="color:#6272a4"># Takes ~5 seconds</span>
+</span></span><span style="display:flex;"><span>async_results <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>run(async_main())  <span style="color:#6272a4"># Takes ~1 second</span>
 </span></span></code></pre></div><p>This example demonstrates the dramatic differences between two approaches. The synchronous version processes requests sequentially, waiting for each to complete before starting the next. With five one-second operations, it takes roughly give seconds to complete. The asynchronous approach, however, initiates all requests concurrently and awaits their completion in parallel completing in just over one second.</p>
 <p>This performance gap widens further with more operations or longer wait times, highlighting why asynchronous programming is essential when building applications that make multiple calls to LLM services, databases, or other I/O-bound resources.</p>
 <h2 id="evolution-of-asyncio-in-python">Evolution of AsyncIO in Python<a hidden class="anchor" aria-hidden="true" href="#evolution-of-asyncio-in-python">#</a></h2>
 <p>Before the introduction of AsyncIO in Python 3.4, asynchronous programming was often simulated using generators combined with callbacks or frameworks (like <code>tornado</code> or <code>Twisted</code>). Generators allowed developers to write asynchronous code in a way that resembled synchronous code, using <code>yield</code> keyword to pause and resume execution:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># example of using generators simulating asynchronous programming</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># example of using generators simulating asynchronous programming</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> time 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">async_task</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#e6db74">&#34;start task&#34;</span> 
-</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>) <span style="color:#75715e"># simulate blocking I/O</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#e6db74">&#34;task completed&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">async_task</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">yield</span> <span style="color:#f1fa8c">&#34;start task&#34;</span> 
+</span></span><span style="display:flex;"><span>    time<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>) <span style="color:#6272a4"># simulate blocking I/O</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">yield</span> <span style="color:#f1fa8c">&#34;task completed&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(generator):
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># a simple scheduler to run the generator</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># it iterates over the generator, simulating a </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># scheduler that drives the asynchronous execution</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> step <span style="color:#f92672">in</span> generator:
-</span></span><span style="display:flex;"><span>        print(step)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">run</span>(generator):
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># a simple scheduler to run the generator</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># it iterates over the generator, simulating a </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># scheduler that drives the asynchronous execution</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> step <span style="color:#ff79c6">in</span> generator:
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(step)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>task <span style="color:#f92672">=</span> async_task()
+</span></span><span style="display:flex;"><span>task <span style="color:#ff79c6">=</span> async_task()
 </span></span><span style="display:flex;"><span>run(task)
 </span></span></code></pre></div><p>The code above mimics asynchronous programming by breaking tasks into smaller steps and executing them <strong>sequentially</strong>. However, it doesn&rsquo;t provide the true concurrency. To do that, developers would need to use generators in combination with callbacks, leveraging exceptions like <code>StopIteration</code> to signal completion:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> time
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">async_sleeping</span>(duration):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;sleeping for </span><span style="color:#e6db74">{</span>duration<span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds...&#34;</span>
-</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(duration)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;slept for </span><span style="color:#e6db74">{</span>duration<span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds!&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">async_sleeping</span>(duration):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">yield</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;sleeping for </span><span style="color:#f1fa8c">{</span>duration<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> seconds...&#34;</span>
+</span></span><span style="display:flex;"><span>    time<span style="color:#ff79c6">.</span>sleep(duration)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">yield</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;slept for </span><span style="color:#f1fa8c">{</span>duration<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> seconds!&#34;</span>
 </span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(generator):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
-</span></span><span style="display:flex;"><span>            step <span style="color:#f92672">=</span> next(generator)
-</span></span><span style="display:flex;"><span>            print(step)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">StopIteration</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">run</span>(generator):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">while</span> <span style="color:#ff79c6">True</span>:
+</span></span><span style="display:flex;"><span>            step <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">next</span>(generator)
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">print</span>(step)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">except</span> StopIteration:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">pass</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>task <span style="color:#f92672">=</span> async_sleeping(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>task <span style="color:#ff79c6">=</span> async_sleeping(<span style="color:#bd93f9">2</span>)
 </span></span><span style="display:flex;"><span>run(task)
 </span></span></code></pre></div><p>When a generator exhausted its <code>yield</code> statements, it raised <code>StopIteration</code>, signaling completion to the event loop. This allowed the loop to clean up resources or schedule new tasks. But still, generators are not true asynchronous programming, because generators can&rsquo;t handle true non-blocking I/O operations efficiently, and developers had to implement event loops and schedulers manually, leading to error-prone code.</p>
 <p>Python 3.4 introduced the <code>asyncio</code> module, making a significant milestone in Python&rsquo;s asynchronous capabilities. This dedicated framework provided standardized tool for asynchronous programming, including event loops, coroutines, futures and tasks. However, the early syntax still relied on generators and decorators, and working with the event loop required considerable boilerplate code:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># example from the book: </span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># example from the book: </span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> time
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>time<span style="color:#f92672">.</span>ctime()<span style="color:#e6db74">}</span><span style="color:#e6db74"> hello!&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1.0</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>time<span style="color:#f92672">.</span>ctime()<span style="color:#e6db74">}</span><span style="color:#e6db74"> goodbye!&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>time<span style="color:#ff79c6">.</span>ctime()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> hello!&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1.0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>time<span style="color:#ff79c6">.</span>ctime()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> goodbye!&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># a loop instance is required to run coroutines </span>
-</span></span><span style="display:flex;"><span>loop <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>get_event_loop()
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># a loop instance is required to run coroutines </span>
+</span></span><span style="display:flex;"><span>loop <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>get_event_loop()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># OPTIONAL:</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># use create_task() to schedule the coroutine to be run on the loop </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># the returned object can be used to monitor the status of the task </span>
-</span></span><span style="display:flex;"><span>task <span style="color:#f92672">=</span> loop<span style="color:#f92672">.</span>create_task(main())
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># OPTIONAL:</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># use create_task() to schedule the coroutine to be run on the loop </span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># the returned object can be used to monitor the status of the task </span>
+</span></span><span style="display:flex;"><span>task <span style="color:#ff79c6">=</span> loop<span style="color:#ff79c6">.</span>create_task(main())
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># this call blocks the current thread and keep the loop running </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># only until the given coroutine completes </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># other tasks scheduled on the loop will also run while the loop is running.</span>
-</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> loop<span style="color:#f92672">.</span>run_until_complete(task)
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># this call blocks the current thread and keep the loop running </span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># only until the given coroutine completes </span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># other tasks scheduled on the loop will also run while the loop is running.</span>
+</span></span><span style="display:flex;"><span>results <span style="color:#ff79c6">=</span> loop<span style="color:#ff79c6">.</span>run_until_complete(task)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># gather the still-pending tasks, cancel them</span>
-</span></span><span style="display:flex;"><span>pending <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>all_tasks(loop<span style="color:#f92672">=</span>loop)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> task <span style="color:#f92672">in</span> pending:
-</span></span><span style="display:flex;"><span>    task<span style="color:#f92672">.</span>cancel()
-</span></span><span style="display:flex;"><span>group <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>gather(<span style="color:#f92672">*</span>pending, return_exceptions<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>loop<span style="color:#f92672">.</span>run_until_complete(group)
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># gather the still-pending tasks, cancel them</span>
+</span></span><span style="display:flex;"><span>pending <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>all_tasks(loop<span style="color:#ff79c6">=</span>loop)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">for</span> task <span style="color:#ff79c6">in</span> pending:
+</span></span><span style="display:flex;"><span>    task<span style="color:#ff79c6">.</span>cancel()
+</span></span><span style="display:flex;"><span>group <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>gather(<span style="color:#ff79c6">*</span>pending, return_exceptions<span style="color:#ff79c6">=</span><span style="color:#ff79c6">True</span>)
+</span></span><span style="display:flex;"><span>loop<span style="color:#ff79c6">.</span>run_until_complete(group)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># to be called on a stopped loop</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># it will clear all the queues and shut down the executor</span>
-</span></span><span style="display:flex;"><span>loop<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># to be called on a stopped loop</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># it will clear all the queues and shut down the executor</span>
+</span></span><span style="display:flex;"><span>loop<span style="color:#ff79c6">.</span>close()
 </span></span></code></pre></div><p>As shown above, developers had to manually create, manage and close the event loop using <code>get_event_loop</code>, <code>run_until_complete</code> and <code>loop.close()</code>, leading to verbose code even for simple asynchronous operations. This complexity was significantly reduced with Python 3.7&rsquo;s introduction of <code>asyncio.run()</code>, which handles all the event loop management automatically:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> time
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>time<span style="color:#f92672">.</span>ctime()<span style="color:#e6db74">}</span><span style="color:#e6db74"> hello!&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1.0</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>time<span style="color:#f92672">.</span>ctime()<span style="color:#e6db74">}</span><span style="color:#e6db74"> goodbye!&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>time<span style="color:#ff79c6">.</span>ctime()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> hello!&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1.0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>time<span style="color:#ff79c6">.</span>ctime()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> goodbye!&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Python 3.7+</span>
-</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>run(main())
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Python 3.7+</span>
+</span></span><span style="display:flex;"><span>results <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>run(main())
 </span></span></code></pre></div><h3 id="running-blocking-functions-in-an-asynchronous-context">Running blocking functions in an asynchronous context<a hidden class="anchor" aria-hidden="true" href="#running-blocking-functions-in-an-asynchronous-context">#</a></h3>
 <p>One common challenge when working with asyncIO integrating existing synchronous, blocking code into an asynchronous application. This is particularly relevant when working with LLMs, as many existing Python libraries may not have sync-native APIs.</p>
 <p>When faced with a blocking function that would halt your event loop, you need to offload it to a separate thread or process. Prior to Pytnon 3.9, this was typically done using <code>asyncio.run_in_executor()</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time 
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> time 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>time<span style="color:#f92672">.</span>ctime()<span style="color:#e6db74">}</span><span style="color:#e6db74"> hello!&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1.0</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>time<span style="color:#f92672">.</span>ctime()<span style="color:#e6db74">}</span><span style="color:#e6db74"> goodbye!&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>time<span style="color:#ff79c6">.</span>ctime()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> hello!&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1.0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>time<span style="color:#ff79c6">.</span>ctime()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> goodbye!&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">blocking</span>():
-</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.5</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>time<span style="color:#f92672">.</span>ctime()<span style="color:#e6db74">}</span><span style="color:#e6db74"> Hello from a thread!&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">blocking</span>():
+</span></span><span style="display:flex;"><span>    time<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">0.5</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>time<span style="color:#ff79c6">.</span>ctime()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> Hello from a thread!&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>loop <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>get_event_loop()
-</span></span><span style="display:flex;"><span>task <span style="color:#f92672">=</span> loop<span style="color:#f92672">.</span>create_task(main())
+</span></span><span style="display:flex;"><span>loop <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>get_event_loop()
+</span></span><span style="display:flex;"><span>task <span style="color:#ff79c6">=</span> loop<span style="color:#ff79c6">.</span>create_task(main())
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># run the blocking function in the default executor</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># note that the first argument must be `None` to use the default executor.</span>
-</span></span><span style="display:flex;"><span>loop<span style="color:#f92672">.</span>run_in_executor(<span style="color:#66d9ef">None</span>, blocking)
-</span></span><span style="display:flex;"><span>loop<span style="color:#f92672">.</span>run_until_complete(task)
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># run the blocking function in the default executor</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># note that the first argument must be `None` to use the default executor.</span>
+</span></span><span style="display:flex;"><span>loop<span style="color:#ff79c6">.</span>run_in_executor(<span style="color:#ff79c6">None</span>, blocking)
+</span></span><span style="display:flex;"><span>loop<span style="color:#ff79c6">.</span>run_until_complete(task)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>pending <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>all_tasks(loop<span style="color:#f92672">=</span>loop)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> task <span style="color:#f92672">in</span> pending:
-</span></span><span style="display:flex;"><span>    task<span style="color:#f92672">.</span>cancel()
-</span></span><span style="display:flex;"><span>group <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>gather(<span style="color:#f92672">*</span>pending, return_exceptions<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>loop<span style="color:#f92672">.</span>run_until_complete(group)
-</span></span><span style="display:flex;"><span>loop<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>pending <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>all_tasks(loop<span style="color:#ff79c6">=</span>loop)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">for</span> task <span style="color:#ff79c6">in</span> pending:
+</span></span><span style="display:flex;"><span>    task<span style="color:#ff79c6">.</span>cancel()
+</span></span><span style="display:flex;"><span>group <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>gather(<span style="color:#ff79c6">*</span>pending, return_exceptions<span style="color:#ff79c6">=</span><span style="color:#ff79c6">True</span>)
+</span></span><span style="display:flex;"><span>loop<span style="color:#ff79c6">.</span>run_until_complete(group)
+</span></span><span style="display:flex;"><span>loop<span style="color:#ff79c6">.</span>close()
 </span></span></code></pre></div><p><code>asyncio.run_in_executor()</code> doesn&rsquo;t block the main thread, it only schedules the executor task to run. The executor task begins executing only after <code>run_until_complete()</code> is called, allowing the event loop to manage the execution alongside other async tasks.</p>
 <p><strong>Note:</strong> Python 3.9 introduced the cleaner and more intuitive <code>asyncio.to_thread()</code> function, allowing the preceding example to be rewritten more elegantly:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time 
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> time 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>time<span style="color:#f92672">.</span>ctime()<span style="color:#e6db74">}</span><span style="color:#e6db74"> hello!&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1.0</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>time<span style="color:#f92672">.</span>ctime()<span style="color:#e6db74">}</span><span style="color:#e6db74"> goodbye!&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>time<span style="color:#ff79c6">.</span>ctime()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> hello!&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1.0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>time<span style="color:#ff79c6">.</span>ctime()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> goodbye!&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">blocking</span>():
-</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.5</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>time<span style="color:#f92672">.</span>ctime()<span style="color:#e6db74">}</span><span style="color:#e6db74"> Hello from a thread!&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">blocking</span>():
+</span></span><span style="display:flex;"><span>    time<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">0.5</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>time<span style="color:#ff79c6">.</span>ctime()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> Hello from a thread!&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>():
-</span></span><span style="display:flex;"><span>    task <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>create_task(main())
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>to_thread(blocking)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> task
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">run</span>():
+</span></span><span style="display:flex;"><span>    task <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>create_task(main())
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>to_thread(blocking)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> task
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>asyncio<span style="color:#f92672">.</span>run(run())
+</span></span><span style="display:flex;"><span>asyncio<span style="color:#ff79c6">.</span>run(run())
 </span></span></code></pre></div><h3 id="progression-of-pythons-async-capabilities">Progression of Python&rsquo;s Async Capabilities<a hidden class="anchor" aria-hidden="true" href="#progression-of-pythons-async-capabilities">#</a></h3>
 <p>Python&rsquo;s asynchronous programming features have evolved significantly over the past decade, with each version bringing important improvements to make async code more powerful, readable, and maintainable:</p>
 <ul>
@@ -397,32 +400,32 @@ Unlike traditional synchronous programming, where operations execute sequentiall
 <h3 id="coroutines">Coroutines<a hidden class="anchor" aria-hidden="true" href="#coroutines">#</a></h3>
 <p>Coroutines are the fundamental building blocks of AsyncIO, defined using <code>async def</code> syntax introduced in Python 3.5. They represent functions that can be paused and resumed, allowing other coroutines to run while waiting for I/O operations. This cooperative multitasking approach is what enables efficient concurrency without the overhead of multiple threads.</p>
 <p>To understand how coroutines work, let&rsquo;s first look at a simple example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># this is a coroutine </span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_data</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Data fetched&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># this is a coroutine </span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">fetch_data</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;Data fetched&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># type(fetch_data) -&gt; function </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># f = fetch_data(), type(f) -&gt; coroutine</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># type(fetch_data) -&gt; function </span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># f = fetch_data(), type(f) -&gt; coroutine</span>
 </span></span></code></pre></div><p>Under the hood, a coroutine is triggered by sending it a <code>None</code>; and when it returns, a <code>StopIteration</code> exception is raised. While these can be marked as the beginning and the end of a coroutine, <code>throw</code> can be used to inject exceptions into a coroutine:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>coro <span style="color:#f92672">=</span> f()
-</span></span><span style="display:flex;"><span>coro<span style="color:#f92672">.</span>send(<span style="color:#66d9ef">None</span>)
-</span></span><span style="display:flex;"><span>coro<span style="color:#f92672">.</span>throw(<span style="color:#a6e22e">Exception</span>, <span style="color:#e6db74">&#34;blah&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>coro <span style="color:#ff79c6">=</span> f()
+</span></span><span style="display:flex;"><span>coro<span style="color:#ff79c6">.</span>send(<span style="color:#ff79c6">None</span>)
+</span></span><span style="display:flex;"><span>coro<span style="color:#ff79c6">.</span>throw(Exception, <span style="color:#f1fa8c">&#34;blah&#34;</span>)
 </span></span></code></pre></div><p>Or cancel a task:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>: <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> asyncio<span style="color:#f92672">.</span>CancelledError:
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;I was cancelled&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">111</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">f</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">while</span> <span style="color:#ff79c6">True</span>: <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">except</span> asyncio<span style="color:#ff79c6">.</span>CancelledError:
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;I was cancelled&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">111</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>coro <span style="color:#f92672">=</span> f()
-</span></span><span style="display:flex;"><span>coro<span style="color:#f92672">.</span>send(<span style="color:#66d9ef">None</span>)
-</span></span><span style="display:flex;"><span>coro<span style="color:#f92672">.</span>send(<span style="color:#66d9ef">None</span>)
-</span></span><span style="display:flex;"><span>coro<span style="color:#f92672">.</span>throw(asyncio<span style="color:#f92672">.</span>CancelledError)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># i was cancelled!</span>
+</span></span><span style="display:flex;"><span>coro <span style="color:#ff79c6">=</span> f()
+</span></span><span style="display:flex;"><span>coro<span style="color:#ff79c6">.</span>send(<span style="color:#ff79c6">None</span>)
+</span></span><span style="display:flex;"><span>coro<span style="color:#ff79c6">.</span>send(<span style="color:#ff79c6">None</span>)
+</span></span><span style="display:flex;"><span>coro<span style="color:#ff79c6">.</span>throw(asyncio<span style="color:#ff79c6">.</span>CancelledError)
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># i was cancelled!</span>
 </span></span></code></pre></div><p>Coroutines bear a structural resemblance to generators, which is why generators were initially used to simulate coroutines before the introduction of native <code>async/await</code> syntax. Developers would use generators with special decorators (like <code>@asyncio.coroutine</code>) to approximate coroutine behavior.</p>
 <p>What fundamentally distinguishes a coroutine from a regular function or generator is its execution model. When called, a <strong>coroutine doesn&rsquo;t execute immediately</strong> but instead returns a coroutine object - essentially a promise or placeholder for a future result. This deferred execution is what enables the event loop to orchestrate multiple coroutines efficiently.</p>
 <h3 id="event-loop">Event Loop<a hidden class="anchor" aria-hidden="true" href="#event-loop">#</a></h3>
@@ -438,58 +441,58 @@ Unlike traditional synchronous programming, where operations execute sequentiall
 <p>Tasks and Futures are closely related concepts that represent different aspects of asynchronous execution:</p>
 <p>A <strong>Task</strong> is a wrapper around a coroutine that schedules it for execution on the event loop. You create a Task by passing a coroutine to functions like <code>loop.create_task(coro)</code> or the newer <code>asyncio.create_task(coro)</code>. Once created, a Task actively executes its coroutine when the event loop runs, without requiring additional action from the developer.</p>
 <p>A <strong>Future</strong>, on the other hand, is a lower-level construct that doesn&rsquo;t run any code itself. Futures serve as placeholders for results that will be available in the future. They provide a way to track the status of an operation (pending, completed, or failed) and access its result when available.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>(f: asyncio<span style="color:#f92672">.</span>Future):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    f<span style="color:#f92672">.</span>set_result(<span style="color:#e6db74">&#34;I have finished.&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>(f: asyncio<span style="color:#ff79c6">.</span>Future):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>)
+</span></span><span style="display:flex;"><span>    f<span style="color:#ff79c6">.</span>set_result(<span style="color:#f1fa8c">&#34;I have finished.&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>loop <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>get_event_loop()
-</span></span><span style="display:flex;"><span>fut <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>Future()
-</span></span><span style="display:flex;"><span>print(fut<span style="color:#f92672">.</span>done()) <span style="color:#75715e"># False </span>
+</span></span><span style="display:flex;"><span>loop <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>get_event_loop()
+</span></span><span style="display:flex;"><span>fut <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>Future()
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">print</span>(fut<span style="color:#ff79c6">.</span>done()) <span style="color:#6272a4"># False </span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>loop<span style="color:#f92672">.</span>create_task(main(fut))
-</span></span><span style="display:flex;"><span>loop<span style="color:#f92672">.</span>run_until_complete(fut) <span style="color:#75715e"># &#34;I have finished.&#34;</span>
+</span></span><span style="display:flex;"><span>loop<span style="color:#ff79c6">.</span>create_task(main(fut))
+</span></span><span style="display:flex;"><span>loop<span style="color:#ff79c6">.</span>run_until_complete(fut) <span style="color:#6272a4"># &#34;I have finished.&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(fut<span style="color:#f92672">.</span>done()) <span style="color:#75715e"># True </span>
-</span></span><span style="display:flex;"><span>print(fut<span style="color:#f92672">.</span>result()) <span style="color:#75715e"># &#34;I have finished.&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">print</span>(fut<span style="color:#ff79c6">.</span>done()) <span style="color:#6272a4"># True </span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">print</span>(fut<span style="color:#ff79c6">.</span>result()) <span style="color:#6272a4"># &#34;I have finished.&#34;</span>
 </span></span></code></pre></div><p>In the example above, we created the Future instance <code>fut</code> using <code>asyncio.Future()</code>. By default, this Future instance is <strong>tied to the loop</strong> but is <strong>not (will not be) attached to any coroutine</strong>, as opposed to Task instances. Then, we schedule the <code>main()</code> coroutine, execute the future, the result of the future instance is set when the execution is completed.</p>
 <p>From an implementation perspective, a Task inherits from Future - the Future class is a <strong>superclass</strong> that provides primitive building blocks for Tasks. While both represent asynchronous operations, a Future is more generic, representing a <strong>future completion state</strong> of any activity managed by the event loop. A Task is more specific, representing a running coroutine that&rsquo;s been scheduled on the event loop.</p>
 <p>This relationship explains why Tasks have all the features of Futures (like the ability to check completion status or retrieve results) plus additional capabilities specific to managing coroutines.</p>
 <h4 id="ensure_future-vs-create_task"><code>ensure_future()</code> vs. <code>create_task()</code><a hidden class="anchor" aria-hidden="true" href="#ensure_future-vs-create_task">#</a></h4>
 <p>Some developers recommend using <code>asyncio.create_task()</code> to run coroutines while others recommend <code>asyncio.ensure_future()</code>. In summary, <code>asyncio.ensure_future()</code> returns a Task instance when passing in a coroutine; it returns the input unchanged when passing in a Future instance.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">f</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">pass</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>coro <span style="color:#f92672">=</span> f()
-</span></span><span style="display:flex;"><span>loop <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>get_event_loop()
+</span></span><span style="display:flex;"><span>coro <span style="color:#ff79c6">=</span> f()
+</span></span><span style="display:flex;"><span>loop <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>get_event_loop()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>task <span style="color:#f92672">=</span> loop<span style="color:#f92672">.</span>create_task(coro)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">assert</span> isinstance(task, asyncio<span style="color:#f92672">.</span>Task) <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>task <span style="color:#ff79c6">=</span> loop<span style="color:#ff79c6">.</span>create_task(coro)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">assert</span> <span style="color:#8be9fd;font-style:italic">isinstance</span>(task, asyncio<span style="color:#ff79c6">.</span>Task) <span style="color:#6272a4"># True</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>new_task <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>ensure_future(coro)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">assert</span> isinstance(new_task, asyncio<span style="color:#f92672">.</span>Task) <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>new_task <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>ensure_future(coro)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">assert</span> <span style="color:#8be9fd;font-style:italic">isinstance</span>(new_task, asyncio<span style="color:#ff79c6">.</span>Task) <span style="color:#6272a4"># True</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>new_new <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>ensure_future(task)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">assert</span> new_new <span style="color:#f92672">is</span> task <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>new_new <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>ensure_future(task)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">assert</span> new_new <span style="color:#ff79c6">is</span> task <span style="color:#6272a4"># True</span>
 </span></span></code></pre></div><h2 id="beyond-the-basics-advanced-asyncio-patterns">Beyond the Basics: Advanced AsyncIO Patterns<a hidden class="anchor" aria-hidden="true" href="#beyond-the-basics-advanced-asyncio-patterns">#</a></h2>
 <p>As you build more complex asynchronous applications, particularly those interacting with external services like LLM APIs, you&rsquo;ll need more advanced patterns to manage resources and control flow efficiently.</p>
 <h2 id="async-context-management-async-with">Async Context Management: <code>async with</code><a hidden class="anchor" aria-hidden="true" href="#async-context-management-async-with">#</a></h2>
 <p>Context managers are crucial for properly managing resources in Python, ensuring proper setup and cleanup even when exceptions occur. When working with asynchronous resources - like database connections or API sessions - standard context managers won&rsquo;t suffice because they can block the event loop.</p>
 <p>Async context managers solve this problem by providing asynchronous versions of the familiar context management protocol. Instead of <code>__enter__</code> and <code>__exit__</code>, they use <code>__aenter__</code> and <code>__aexit__</code> methods that can be awaited. This allows resources acquisition and release to happen asynchronously without blocking the event loop.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AsyncDatabase</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> __aenter__(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> self<span style="color:#f92672">.</span>connect() <span style="color:#75715e"># connect to database object asynchronously </span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self <span style="color:#75715e"># returns the database object to be used in the with block</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">AsyncDatabase</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> __aenter__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">await</span> self<span style="color:#ff79c6">.</span>connect() <span style="color:#6272a4"># connect to database object asynchronously </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> self <span style="color:#6272a4"># returns the database object to be used in the with block</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> __aexit__(self, exc_type, exc, tb): 
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> self<span style="color:#f92672">.</span>disconnect() <span style="color:#75715e"># disconnect when exiting the with block</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> __aexit__(self, exc_type, exc, tb): 
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">await</span> self<span style="color:#ff79c6">.</span>disconnect() <span style="color:#6272a4"># disconnect when exiting the with block</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">process_data</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> AsyncDatabase() <span style="color:#66d9ef">as</span> db: <span style="color:#75715e"># creates database and connects</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> db<span style="color:#f92672">.</span>query(<span style="color:#e6db74">&#34;SELECT * FROM data&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">process_data</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> AsyncDatabase() <span style="color:#ff79c6">as</span> db: <span style="color:#6272a4"># creates database and connects</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">await</span> db<span style="color:#ff79c6">.</span>query(<span style="color:#f1fa8c">&#34;SELECT * FROM data&#34;</span>)
 </span></span></code></pre></div><p>The workflow follows a similar pattern to synchronous context managers but with asynchronous operations:</p>
 <ol>
 <li>when we call <code>async with AsyncDatabase() as db</code>, it creates an <code>AsyncDatabase</code> instance</li>
@@ -502,93 +505,93 @@ Unlike traditional synchronous programming, where operations execute sequentiall
 <h3 id="simplifying-context-management-with-decorators">Simplifying Context Management with Decorators<a hidden class="anchor" aria-hidden="true" href="#simplifying-context-management-with-decorators">#</a></h3>
 <p>While class-based async context managers offer complete control, they require defining multiple methods and can be verbose. Python provides decorator-based alternatives that are often more concise for simpler cases.</p>
 <p>First, let&rsquo;s recall how standard synchronous <code>@contextmanager</code> decorator works for regular context managers:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> contextlib <span style="color:#f92672">import</span> contextmanager 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> contextlib <span style="color:#ff79c6">import</span> contextmanager 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># note: download_webpage and update_stats are hypothetical functions</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># that would typically perform network or file operations</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># note: download_webpage and update_stats are hypothetical functions</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># that would typically perform network or file operations</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># use @contextmanager to transform a generator</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># function into a context manager</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@contextmanager</span>  
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">web_page</span>(url):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> download_webpage(url) <span style="color:#75715e"># CPU bound </span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> data 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error: </span><span style="color:#e6db74">{</span>str(e)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">finally</span>:
-</span></span><span style="display:flex;"><span>        update_stats(url) <span style="color:#75715e"># CPU bound </span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># use @contextmanager to transform a generator</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># function into a context manager</span>
+</span></span><span style="display:flex;"><span>@contextmanager  
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">web_page</span>(url):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">try</span>:
+</span></span><span style="display:flex;"><span>        data <span style="color:#ff79c6">=</span> download_webpage(url) <span style="color:#6272a4"># CPU bound </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">yield</span> data 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">except</span> Exception <span style="color:#ff79c6">as</span> e:
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Error: </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">str</span>(e)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">finally</span>:
+</span></span><span style="display:flex;"><span>        update_stats(url) <span style="color:#6272a4"># CPU bound </span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> web_page(<span style="color:#e6db74">&#34;google.com&#34;</span>) <span style="color:#66d9ef">as</span> data:
-</span></span><span style="display:flex;"><span>    process(data) <span style="color:#75715e"># assume non CPU bound </span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">with</span> web_page(<span style="color:#f1fa8c">&#34;google.com&#34;</span>) <span style="color:#ff79c6">as</span> data:
+</span></span><span style="display:flex;"><span>    process(data) <span style="color:#6272a4"># assume non CPU bound </span>
 </span></span></code></pre></div><p>This code above works well for synchronous operations, but would block the event loop if used in an async context. For asynchronous operations, Python provides the <code>@asynccontextmanager</code> decorator, which is analogous to the synchronous version but designed for async functions:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> contextlib <span style="color:#f92672">import</span> asynccontextmanager
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> contextlib <span style="color:#ff79c6">import</span> asynccontextmanager
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># when using the @asynccontextmanager, the </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># decorated function needs to be async  </span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@asynccontextmanager</span>  
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">web_page</span>(url):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># download_webpage() needs to be modified</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># to be async as well</span>
-</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> download_webpage(url) 
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> data 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error: </span><span style="color:#e6db74">{</span>str(e)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">finally</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> update_stats(url)
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># when using the @asynccontextmanager, the </span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># decorated function needs to be async  </span>
+</span></span><span style="display:flex;"><span>@asynccontextmanager  
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">web_page</span>(url):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4"># download_webpage() needs to be modified</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4"># to be async as well</span>
+</span></span><span style="display:flex;"><span>        data <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> download_webpage(url) 
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">yield</span> data 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">except</span> Exception <span style="color:#ff79c6">as</span> e:
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Error: </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">str</span>(e)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">finally</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">await</span> update_stats(url)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> web_page(<span style="color:#e6db74">&#34;google.com&#34;</span>) <span style="color:#66d9ef">as</span> data:
-</span></span><span style="display:flex;"><span>    process(data) <span style="color:#75715e"># assume non CPU bound </span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> web_page(<span style="color:#f1fa8c">&#34;google.com&#34;</span>) <span style="color:#ff79c6">as</span> data:
+</span></span><span style="display:flex;"><span>    process(data) <span style="color:#6272a4"># assume non CPU bound </span>
 </span></span></code></pre></div><h3 id="bridging-synchronous-and-asynchronous-worlds">Bridging Synchronous and Asynchronous Worlds<a hidden class="anchor" aria-hidden="true" href="#bridging-synchronous-and-asynchronous-worlds">#</a></h3>
 <p>A common challenge when working with LLMs or other external services is integrating existing synchronous libraries into an async application. If you&rsquo;re importing functions like <code>download_webpage()</code> from a third party library that doesn&rsquo;t support async operations, you need to adapt them to work within your async context.</p>
 <p>There are two primary approaches to wrap synchronous functions for use in async code:</p>
 <ul>
 <li>using <code>run_in_executor()</code>:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> contextlib <span style="color:#f92672">import</span> asynccontextmanager
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> contextlib <span style="color:#ff79c6">import</span> asynccontextmanager
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@asynccontextmanager</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">web_page</span>(url):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>: 
-</span></span><span style="display:flex;"><span>        loop <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>get_event_loop()
-</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> loop<span style="color:#f92672">.</span>run_in_executor(<span style="color:#66d9ef">None</span>, download_webpage, url)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> data 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error: </span><span style="color:#e6db74">{</span>str(e)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">finally</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> loop<span style="color:#f92672">.</span>run_in_executor(<span style="color:#66d9ef">None</span>, update_stats, url)
+</span></span><span style="display:flex;"><span>@asynccontextmanager
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">web_page</span>(url):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">try</span>: 
+</span></span><span style="display:flex;"><span>        loop <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>get_event_loop()
+</span></span><span style="display:flex;"><span>        data <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> loop<span style="color:#ff79c6">.</span>run_in_executor(<span style="color:#ff79c6">None</span>, download_webpage, url)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">yield</span> data 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">except</span> Exception <span style="color:#ff79c6">as</span> e:
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Error: </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">str</span>(e)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">finally</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">await</span> loop<span style="color:#ff79c6">.</span>run_in_executor(<span style="color:#ff79c6">None</span>, update_stats, url)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> web_page(<span style="color:#e6db74">&#34;google.com&#34;</span>) <span style="color:#66d9ef">as</span> data:
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> web_page(<span style="color:#f1fa8c">&#34;google.com&#34;</span>) <span style="color:#ff79c6">as</span> data:
 </span></span><span style="display:flex;"><span>    process(data)
 </span></span></code></pre></div><ul>
 <li>using <code>to_thread()</code>:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> contextlib <span style="color:#f92672">import</span> asynccontextmanager 
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> contextlib <span style="color:#ff79c6">import</span> asynccontextmanager 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@asynccontextmanager</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">web_page</span>(url):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>to_thread(download_webpage, url)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> data 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error: </span><span style="color:#e6db74">{</span>str(e)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">finally</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>to_thread(update_stats, url)
+</span></span><span style="display:flex;"><span>@asynccontextmanager
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">web_page</span>(url):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">try</span>:
+</span></span><span style="display:flex;"><span>        data <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>to_thread(download_webpage, url)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">yield</span> data 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">except</span> Exception <span style="color:#ff79c6">as</span> e:
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Error: </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">str</span>(e)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">finally</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>to_thread(update_stats, url)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> web_page(<span style="color:#e6db74">&#34;google.com&#34;</span>) <span style="color:#66d9ef">as</span> data:
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> web_page(<span style="color:#f1fa8c">&#34;google.com&#34;</span>) <span style="color:#ff79c6">as</span> data:
 </span></span><span style="display:flex;"><span>    process(data)
 </span></span></code></pre></div><h2 id="working-with-streams-async-iteration-and-comprehension">Working with Streams: Async Iteration and Comprehension<a hidden class="anchor" aria-hidden="true" href="#working-with-streams-async-iteration-and-comprehension">#</a></h2>
 <p>When working with LLMs, you might need to process streaming responses or handle data that arrives incrementally. AsyncIO provides specialized syntax for working with asynchronous iterables - data sources that yield values asynchronously over time.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">process_stream</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> async_stream():
-</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> process_item(item)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> result
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">process_stream</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">for</span> item <span style="color:#ff79c6">in</span> async_stream():
+</span></span><span style="display:flex;"><span>        result <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> process_item(item)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">yield</span> result
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Async comprehension</span>
-</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> [item <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> process_stream()]
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Async comprehension</span>
+</span></span><span style="display:flex;"><span>results <span style="color:#ff79c6">=</span> [item <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">for</span> item <span style="color:#ff79c6">in</span> process_stream()]
 </span></span></code></pre></div><p>Under the hood, async iteration operations similarly to the synchronous versions but with asynchronous methods: when you use <code>async for</code>, Python calls the object&rsquo;s <code>__aiter__</code> method to get an async iterator. Then for each iteration, it awaits the iterator&rsquo;s <code>__anext__</code> method, which returns a value for each iteration and raises <code>StopAsyncIteration</code> when finished.</p>
 <p>This pattern is particularly useful when working with streaming LLM responses, where tokens or chunks arrive over time and need to be processed as they become available.</p>
 <h2 id="ensuring-reliability-shutdown-gracefully">Ensuring Reliability: Shutdown gracefully<a hidden class="anchor" aria-hidden="true" href="#ensuring-reliability-shutdown-gracefully">#</a></h2>
@@ -617,249 +620,249 @@ Unlike traditional synchronous programming, where operations execute sequentiall
 <li>consider using <code>gather(..., return_exceptions=True)</code></li>
 </ul>
 <p>The example below provides a minimal approach to handling a keyboard interrupt (Ctrl+C):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># a simple example to handle KeyboardInterrupt / Ctrl-C</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> signal <span style="color:#f92672">import</span> SIGINT, SIGTERM
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># a simple example to handle KeyboardInterrupt / Ctrl-C</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> signal <span style="color:#ff79c6">import</span> SIGINT, SIGTERM
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;&lt;Your app is running&gt;&#34;</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">while</span> <span style="color:#ff79c6">True</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;&lt;Your app is running&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
-</span></span><span style="display:flex;"><span>    loop <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>get_event_loop()
-</span></span><span style="display:flex;"><span>    task <span style="color:#f92672">=</span> loop<span style="color:#f92672">.</span>create_task(main())
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>        loop<span style="color:#f92672">.</span>run_until_complete(task)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">KeyboardInterrupt</span>:
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Got signal: SIGINT, shutting down&#34;</span>) <span style="color:#75715e"># only Ctrl+C can stop the loop</span>
-</span></span><span style="display:flex;"><span>    tasks <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>all_tasks(loop<span style="color:#f92672">=</span>loop)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> tasks:
-</span></span><span style="display:flex;"><span>        t<span style="color:#f92672">.</span>cancel()
-</span></span><span style="display:flex;"><span>    group <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>gather(<span style="color:#f92672">*</span>tasks, return_exceptions<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>    loop<span style="color:#f92672">.</span>run_until_complete(group)
-</span></span><span style="display:flex;"><span>    loop<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    loop <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>get_event_loop()
+</span></span><span style="display:flex;"><span>    task <span style="color:#ff79c6">=</span> loop<span style="color:#ff79c6">.</span>create_task(main())
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">try</span>:
+</span></span><span style="display:flex;"><span>        loop<span style="color:#ff79c6">.</span>run_until_complete(task)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">except</span> KeyboardInterrupt:
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;Got signal: SIGINT, shutting down&#34;</span>) <span style="color:#6272a4"># only Ctrl+C can stop the loop</span>
+</span></span><span style="display:flex;"><span>    tasks <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>all_tasks(loop<span style="color:#ff79c6">=</span>loop)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> tasks:
+</span></span><span style="display:flex;"><span>        t<span style="color:#ff79c6">.</span>cancel()
+</span></span><span style="display:flex;"><span>    group <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>gather(<span style="color:#ff79c6">*</span>tasks, return_exceptions<span style="color:#ff79c6">=</span><span style="color:#ff79c6">True</span>)
+</span></span><span style="display:flex;"><span>    loop<span style="color:#ff79c6">.</span>run_until_complete(group)
+</span></span><span style="display:flex;"><span>    loop<span style="color:#ff79c6">.</span>close()
 </span></span></code></pre></div><p>However, real-world applications typically need more robust signal handling. For instance, you might want to handle both SIGTERM and SIGINT signals, provide a graceful cleanup period, and ensure your application responds appropriately even when multiple shutdown signals are received in quick succession. The following example builds on the previous one by implementing these more advanced features:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># added feature:</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># - handling both SIGTERM and SIGINT</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># - handle CancelledError, and the cleanup code </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># - handle multiple signals </span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># added feature:</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># - handling both SIGTERM and SIGINT</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># - handle CancelledError, and the cleanup code </span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># - handle multiple signals </span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># when hitting Ctrl-C multiple times, the process shuts down when </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># the main() coroutine eventually completes.</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># when hitting Ctrl-C multiple times, the process shuts down when </span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># the main() coroutine eventually completes.</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> signal <span style="color:#f92672">import</span> SIGINT, SIGTERM
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> signal <span style="color:#ff79c6">import</span> SIGINT, SIGTERM
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
-</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;&lt;Your app is running&gt;&#34;</span>)
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> asyncio<span style="color:#f92672">.</span>CancelledError: <span style="color:#75715e"># a callback handler when a signal is received</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>): <span style="color:#75715e"># wait for 3 seconds while the run_until_complete() is running</span>
-</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;&lt;Your app is shutting down&gt;&#34;</span>)
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">while</span> <span style="color:#ff79c6">True</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;&lt;Your app is running&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">except</span> asyncio<span style="color:#ff79c6">.</span>CancelledError: <span style="color:#6272a4"># a callback handler when a signal is received</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">3</span>): <span style="color:#6272a4"># wait for 3 seconds while the run_until_complete() is running</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;&lt;Your app is shutting down&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handler</span>(sig):
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Handler to stop the loop, unblock the run_forever,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    and allow pending tasks collection and cancellation
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    loop<span style="color:#f92672">.</span>stop()
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Got signal: </span><span style="color:#e6db74">{</span>sig<span style="color:#e6db74">!s}</span><span style="color:#e6db74">, shutting down&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ignore signals while shutting down</span>
-</span></span><span style="display:flex;"><span>    loop<span style="color:#f92672">.</span>remove_signal_handler(SIGTERM)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># disable KeyboardInterrupt / Ctrl-C, </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># unable to use loop.remove_signal_handler(SIGINT)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># otherwise KeyboardInterrupt / Ctrl-C will be restored </span>
-</span></span><span style="display:flex;"><span>    loop<span style="color:#f92672">.</span>add_signal_handler(SIGINT, <span style="color:#66d9ef">lambda</span>: <span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">handler</span>(sig):
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">    Handler to stop the loop, unblock the run_forever,
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">    and allow pending tasks collection and cancellation
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    loop<span style="color:#ff79c6">.</span>stop()
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Got signal: </span><span style="color:#f1fa8c">{</span>sig<span style="color:#f1fa8c">!s}</span><span style="color:#f1fa8c">, shutting down&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># ignore signals while shutting down</span>
+</span></span><span style="display:flex;"><span>    loop<span style="color:#ff79c6">.</span>remove_signal_handler(SIGTERM)
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># disable KeyboardInterrupt / Ctrl-C, </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># unable to use loop.remove_signal_handler(SIGINT)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># otherwise KeyboardInterrupt / Ctrl-C will be restored </span>
+</span></span><span style="display:flex;"><span>    loop<span style="color:#ff79c6">.</span>add_signal_handler(SIGINT, <span style="color:#ff79c6">lambda</span>: <span style="color:#ff79c6">None</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__:</span>
-</span></span><span style="display:flex;"><span>    loop <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>get_event_loop()
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> sig <span style="color:#f92672">in</span> (SIGTERM, SIGINT):
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># setting a signal_handler on SIGINT means KeyboardInterrupt </span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># will no longer be raised on SIGINT</span>
-</span></span><span style="display:flex;"><span>        loop<span style="color:#f92672">.</span>add_signal_handler(sig, handler, sig)
-</span></span><span style="display:flex;"><span>    task <span style="color:#f92672">=</span> loop<span style="color:#f92672">.</span>create_task(main())
-</span></span><span style="display:flex;"><span>    loop<span style="color:#f92672">.</span>run_forever() <span style="color:#75715e"># only stops when either SIGINT or SIGTERM is sent to the process</span>
-</span></span><span style="display:flex;"><span>    tasks <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>all_tasks(loop<span style="color:#f92672">=</span>loop)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> tasks:
-</span></span><span style="display:flex;"><span>        t<span style="color:#f92672">.</span>cancel()
-</span></span><span style="display:flex;"><span>    group <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>gather(<span style="color:#f92672">*</span>tasks, return_exceptions<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>    loop<span style="color:#f92672">.</span>run_until_complete(group)
-</span></span><span style="display:flex;"><span>    loop<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;__main__:</span>
+</span></span><span style="display:flex;"><span>    loop <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>get_event_loop()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> sig <span style="color:#ff79c6">in</span> (SIGTERM, SIGINT):
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4"># setting a signal_handler on SIGINT means KeyboardInterrupt </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4"># will no longer be raised on SIGINT</span>
+</span></span><span style="display:flex;"><span>        loop<span style="color:#ff79c6">.</span>add_signal_handler(sig, handler, sig)
+</span></span><span style="display:flex;"><span>    task <span style="color:#ff79c6">=</span> loop<span style="color:#ff79c6">.</span>create_task(main())
+</span></span><span style="display:flex;"><span>    loop<span style="color:#ff79c6">.</span>run_forever() <span style="color:#6272a4"># only stops when either SIGINT or SIGTERM is sent to the process</span>
+</span></span><span style="display:flex;"><span>    tasks <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>all_tasks(loop<span style="color:#ff79c6">=</span>loop)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> tasks:
+</span></span><span style="display:flex;"><span>        t<span style="color:#ff79c6">.</span>cancel()
+</span></span><span style="display:flex;"><span>    group <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>gather(<span style="color:#ff79c6">*</span>tasks, return_exceptions<span style="color:#ff79c6">=</span><span style="color:#ff79c6">True</span>)
+</span></span><span style="display:flex;"><span>    loop<span style="color:#ff79c6">.</span>run_until_complete(group)
+</span></span><span style="display:flex;"><span>    loop<span style="color:#ff79c6">.</span>close()
 </span></span></code></pre></div><p>While the previous example works well for many applications, it still uses the older event loop management style. In modern Python (3.7+), we typically use <code>asyncio.run()</code> to manage the event loop. However, this creates a special challenge for signal handling, since asyncio.run() takes control of the event loop creation and management.</p>
 <p>The following example shows how to implement robust signal handling in an application using <code>asyncio.run()</code>. Note how we need to adapt our approach to work within the constraints of the higher-level API:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> signal <span style="color:#f92672">import</span> SIGINT, SIGTERM
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> signal <span style="color:#ff79c6">import</span> SIGINT, SIGTERM
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    loop <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>get_event_loop()
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># because asyncio.run() takes control of the event loop</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># startup, the handlers must be added in the main() func</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> sig <span style="color:#f92672">in</span> (SIGINT, SIGTERM):
-</span></span><span style="display:flex;"><span>        loop<span style="color:#f92672">.</span>add_signal_handler(sig, handler, sig)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    loop <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>get_event_loop()
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># because asyncio.run() takes control of the event loop</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># startup, the handlers must be added in the main() func</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> sig <span style="color:#ff79c6">in</span> (SIGINT, SIGTERM):
+</span></span><span style="display:flex;"><span>        loop<span style="color:#ff79c6">.</span>add_signal_handler(sig, handler, sig)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
-</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;&lt;Your app is running&gt;&#34;</span>)
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> asyncio<span style="color:#f92672">.</span>CancelledError:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>):
-</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Your app is shutting down.&#34;</span>)
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">while</span> <span style="color:#ff79c6">True</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;&lt;Your app is running&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">except</span> asyncio<span style="color:#ff79c6">.</span>CancelledError:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">3</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;Your app is shutting down.&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handler</span>(sig):
-</span></span><span style="display:flex;"><span>    loop <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>get_running_loop()
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># cannot stop the loop using loop.stop()</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># otherwise will get warning about how the </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># loop was stopped before the task created </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># for main() was completed. </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> task <span style="color:#f92672">in</span> asyncio<span style="color:#f92672">.</span>all_tasks(loop<span style="color:#f92672">=</span>loop):
-</span></span><span style="display:flex;"><span>        task<span style="color:#f92672">.</span>cancel()
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Got signal: </span><span style="color:#e6db74">{</span>sig<span style="color:#e6db74">!s}</span><span style="color:#e6db74">, shutting down&#34;</span>)
-</span></span><span style="display:flex;"><span>    loop<span style="color:#f92672">.</span>remove_signal_handler(SIGTERM)
-</span></span><span style="display:flex;"><span>    loop<span style="color:#f92672">.</span>add_signal_handler(SIGINT, <span style="color:#66d9ef">lambda</span>: <span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">handler</span>(sig):
+</span></span><span style="display:flex;"><span>    loop <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>get_running_loop()
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># cannot stop the loop using loop.stop()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># otherwise will get warning about how the </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># loop was stopped before the task created </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># for main() was completed. </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> task <span style="color:#ff79c6">in</span> asyncio<span style="color:#ff79c6">.</span>all_tasks(loop<span style="color:#ff79c6">=</span>loop):
+</span></span><span style="display:flex;"><span>        task<span style="color:#ff79c6">.</span>cancel()
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Got signal: </span><span style="color:#f1fa8c">{</span>sig<span style="color:#f1fa8c">!s}</span><span style="color:#f1fa8c">, shutting down&#34;</span>)
+</span></span><span style="display:flex;"><span>    loop<span style="color:#ff79c6">.</span>remove_signal_handler(SIGTERM)
+</span></span><span style="display:flex;"><span>    loop<span style="color:#ff79c6">.</span>add_signal_handler(SIGINT, <span style="color:#ff79c6">lambda</span>: <span style="color:#ff79c6">None</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;__main__&#34;</span>:
-</span></span><span style="display:flex;"><span>    asyncio<span style="color:#f92672">.</span>run(main())
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__<span style="color:#ff79c6">==</span><span style="color:#f1fa8c">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    asyncio<span style="color:#ff79c6">.</span>run(main())
 </span></span></code></pre></div><h2 id="advanced-asyncio-modules">Advanced AsyncIO Modules<a hidden class="anchor" aria-hidden="true" href="#advanced-asyncio-modules">#</a></h2>
 <p><code>asyncio.gather()</code> allows you to run multiple coroutines concurrently and wait for all of them to complete, returning their results in the same order as the input coroutines</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_data</span>(url):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Data from </span><span style="color:#e6db74">{</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">fetch_data</span>(url):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Data from </span><span style="color:#f1fa8c">{</span>url<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    results <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>gather(
-</span></span><span style="display:flex;"><span>        fetch_data(<span style="color:#e6db74">&#34;google.com&#34;</span>),
-</span></span><span style="display:flex;"><span>        fetch_data(<span style="color:#e6db74">&#34;bing.com&#34;</span>),
-</span></span><span style="display:flex;"><span>        return_exceptions<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    results <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>gather(
+</span></span><span style="display:flex;"><span>        fetch_data(<span style="color:#f1fa8c">&#34;google.com&#34;</span>),
+</span></span><span style="display:flex;"><span>        fetch_data(<span style="color:#f1fa8c">&#34;bing.com&#34;</span>),
+</span></span><span style="display:flex;"><span>        return_exceptions<span style="color:#ff79c6">=</span><span style="color:#ff79c6">True</span>
 </span></span><span style="display:flex;"><span>    )
-</span></span><span style="display:flex;"><span>    print(results)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(results)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>asyncio<span style="color:#f92672">.</span>run(main())
+</span></span><span style="display:flex;"><span>asyncio<span style="color:#ff79c6">.</span>run(main())
 </span></span></code></pre></div><p><code>asyncio.as_complete()</code> returns an iterator that yields tasks as they complete, regardless of the order they were submitted. This is perfect for scenarios where you want to process results as soon as they&rsquo;re available.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> random 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">process_item</span>(item):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;processed </span><span style="color:#e6db74">{</span>item<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">process_item</span>(item):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(random<span style="color:#ff79c6">.</span>uniform(<span style="color:#bd93f9">0.5</span>, <span style="color:#bd93f9">3</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;processed </span><span style="color:#f1fa8c">{</span>item<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    tasks <span style="color:#f92672">=</span> [process_item(i) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>)]
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    tasks <span style="color:#ff79c6">=</span> [process_item(i) <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">10</span>)]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> future <span style="color:#f92672">in</span> asyncio<span style="color:#f92672">.</span>as_completed(tasks):
-</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> future 
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;got result: </span><span style="color:#e6db74">{</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> future <span style="color:#ff79c6">in</span> asyncio<span style="color:#ff79c6">.</span>as_completed(tasks):
+</span></span><span style="display:flex;"><span>        result <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> future 
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;got result: </span><span style="color:#f1fa8c">{</span>result<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>asyncio<span style="color:#f92672">.</span>run(main())
+</span></span><span style="display:flex;"><span>asyncio<span style="color:#ff79c6">.</span>run(main())
 </span></span></code></pre></div><p><code>asyncio.Semaphore()</code> limit the number of coroutines that can access a resource concurrently. This is crucial when working with APIs that have rate limits or when you need to control resource usage.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> aiohttp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> aiohttp
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_url</span>(url, session, semaphore):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> semaphore:
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;fetching </span><span style="color:#e6db74">{</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> session<span style="color:#f92672">.</span>get(url) <span style="color:#66d9ef">as</span> response:
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> response<span style="color:#f92672">.</span>text()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">fetch_url</span>(url, session, semaphore):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> semaphore:
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;fetching </span><span style="color:#f1fa8c">{</span>url<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> session<span style="color:#ff79c6">.</span>get(url) <span style="color:#ff79c6">as</span> response:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">await</span> response<span style="color:#ff79c6">.</span>text()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    semaphore <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>Semaphore(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>    urls <span style="color:#f92672">=</span> [<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;https://example.com/</span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">20</span>)]
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    semaphore <span style="color:#ff79c6">=</span> asyncio<span style="color:#ff79c6">.</span>Semaphore(<span style="color:#bd93f9">5</span>)
+</span></span><span style="display:flex;"><span>    urls <span style="color:#ff79c6">=</span> [<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;https://example.com/</span><span style="color:#f1fa8c">{</span>i<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">20</span>)]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> aiohttp<span style="color:#f92672">.</span>ClientSession() <span style="color:#66d9ef">as</span> session:
-</span></span><span style="display:flex;"><span>        tasks <span style="color:#f92672">=</span> [fetch_url(url, session, semaphore) <span style="color:#66d9ef">for</span> url <span style="color:#f92672">in</span> urls]
-</span></span><span style="display:flex;"><span>        results <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>gather(<span style="color:#f92672">*</span>tasks)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> aiohttp<span style="color:#ff79c6">.</span>ClientSession() <span style="color:#ff79c6">as</span> session:
+</span></span><span style="display:flex;"><span>        tasks <span style="color:#ff79c6">=</span> [fetch_url(url, session, semaphore) <span style="color:#ff79c6">for</span> url <span style="color:#ff79c6">in</span> urls]
+</span></span><span style="display:flex;"><span>        results <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>gather(<span style="color:#ff79c6">*</span>tasks)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;completed </span><span style="color:#e6db74">{</span>len(results)<span style="color:#e6db74">}</span><span style="color:#e6db74"> requests&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;completed </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">len</span>(results)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> requests&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>asyncio<span style="color:#f92672">.</span>run(main())
+</span></span><span style="display:flex;"><span>asyncio<span style="color:#ff79c6">.</span>run(main())
 </span></span></code></pre></div><p><code>asyncio.TaskGroup()</code> provides a cleaner, more structured approach to concurrent task management with automatic cleanup and error propagation.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">process_data</span>(id):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;processed data </span><span style="color:#e6db74">{</span>id<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> id<span style="color:#f92672">*</span><span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">process_data</span>(<span style="color:#8be9fd;font-style:italic">id</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;processed data </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">id</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#8be9fd;font-style:italic">id</span><span style="color:#ff79c6">*</span><span style="color:#bd93f9">10</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> asyncio<span style="color:#f92672">.</span>TaskGroup() <span style="color:#66d9ef">as</span> tg:
-</span></span><span style="display:flex;"><span>        task1 <span style="color:#f92672">=</span> tg<span style="color:#f92672">.</span>create_task(process_data(<span style="color:#ae81ff">1</span>))
-</span></span><span style="display:flex;"><span>        task2 <span style="color:#f92672">=</span> tg<span style="color:#f92672">.</span>create_task(process_data(<span style="color:#ae81ff">2</span>))
-</span></span><span style="display:flex;"><span>        task3 <span style="color:#f92672">=</span> tg<span style="color:#f92672">.</span>create_task(process_data(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> asyncio<span style="color:#ff79c6">.</span>TaskGroup() <span style="color:#ff79c6">as</span> tg:
+</span></span><span style="display:flex;"><span>        task1 <span style="color:#ff79c6">=</span> tg<span style="color:#ff79c6">.</span>create_task(process_data(<span style="color:#bd93f9">1</span>))
+</span></span><span style="display:flex;"><span>        task2 <span style="color:#ff79c6">=</span> tg<span style="color:#ff79c6">.</span>create_task(process_data(<span style="color:#bd93f9">2</span>))
+</span></span><span style="display:flex;"><span>        task3 <span style="color:#ff79c6">=</span> tg<span style="color:#ff79c6">.</span>create_task(process_data(<span style="color:#bd93f9">3</span>))
 </span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;results: </span><span style="color:#e6db74">{</span>task1<span style="color:#f92672">.</span>result()<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{</span>task2<span style="color:#f92672">.</span>result()<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{</span>task3<span style="color:#f92672">.</span>result()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;results: </span><span style="color:#f1fa8c">{</span>task1<span style="color:#ff79c6">.</span>result()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">, </span><span style="color:#f1fa8c">{</span>task2<span style="color:#ff79c6">.</span>result()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">, </span><span style="color:#f1fa8c">{</span>task3<span style="color:#ff79c6">.</span>result()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>asyncio<span style="color:#f92672">.</span>run(main())
+</span></span><span style="display:flex;"><span>asyncio<span style="color:#ff79c6">.</span>run(main())
 </span></span></code></pre></div><h2 id="writing-tests-for-asyncio-code-with-pytest">Writing Tests for AsyncIO Code with pytest<a hidden class="anchor" aria-hidden="true" href="#writing-tests-for-asyncio-code-with-pytest">#</a></h2>
 <p>Testing asynchronous code requires special handling. The <code>pytest-asyncio</code> plugin makes this straightforward by providing the <code>pytest.mark.asyncio</code> decorator.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pytest
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> pytest
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_data</span>(id):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.1</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Data for </span><span style="color:#e6db74">{</span>id<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">fetch_data</span>(<span style="color:#8be9fd;font-style:italic">id</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">0.1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Data for </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">id</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># mark the test as asyncio </span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@pytest.mark.asyncio</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_fetch_data</span>():
-</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> fetch_data(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> result <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Data for 1&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># mark the test as asyncio </span>
+</span></span><span style="display:flex;"><span>@pytest.mark.asyncio
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">test_fetch_data</span>():
+</span></span><span style="display:flex;"><span>    result <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> fetch_data(<span style="color:#bd93f9">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">assert</span> result <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;Data for 1&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># testing exceptions </span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@pytest.mark.asyncio</span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_fetch_data_with_timeout</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> pytest<span style="color:#f92672">.</span>raises(asyncio<span style="color:#f92672">.</span>TimeoutError):
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>wait_for(asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>), timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># testing exceptions </span>
+</span></span><span style="display:flex;"><span>@pytest.mark.asyncio 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">test_fetch_data_with_timeout</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">with</span> pytest<span style="color:#ff79c6">.</span>raises(asyncio<span style="color:#ff79c6">.</span>TimeoutError):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>wait_for(asyncio<span style="color:#ff79c6">.</span>sleep(<span style="color:#bd93f9">1</span>), timeout<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0.5</span>)
 </span></span></code></pre></div><h3 id="mocking-asynchronous-functions">Mocking Asynchronous Functions<a hidden class="anchor" aria-hidden="true" href="#mocking-asynchronous-functions">#</a></h3>
 <p>Testing async code often requires mocking external service. Here&rsquo;s how to do it:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pytest
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> unittest.mock <span style="color:#f92672">import</span> AsyncMock, patch 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> pytest
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> unittest.mock <span style="color:#ff79c6">import</span> AsyncMock, patch 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_data</span>(client, user_id):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> client<span style="color:#f92672">.</span>fetch_user(user_id)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">get_user_data</span>(client, user_id):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">await</span> client<span style="color:#ff79c6">.</span>fetch_user(user_id)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@pytest.mark.asyncio</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_get_user_data</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># create a mock client with an async method</span>
-</span></span><span style="display:flex;"><span>    mock_client <span style="color:#f92672">=</span> AsyncMock()
-</span></span><span style="display:flex;"><span>    mock_client<span style="color:#f92672">.</span>fetch_user<span style="color:#f92672">.</span>return_value <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Test User&#34;</span>}
+</span></span><span style="display:flex;"><span>@pytest.mark.asyncio
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">test_get_user_data</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># create a mock client with an async method</span>
+</span></span><span style="display:flex;"><span>    mock_client <span style="color:#ff79c6">=</span> AsyncMock()
+</span></span><span style="display:flex;"><span>    mock_client<span style="color:#ff79c6">.</span>fetch_user<span style="color:#ff79c6">.</span>return_value <span style="color:#ff79c6">=</span> {<span style="color:#f1fa8c">&#34;id&#34;</span>: <span style="color:#bd93f9">1</span>, <span style="color:#f1fa8c">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;Test User&#34;</span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># test our function with the mock client </span>
-</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> get_user_data(mock_client, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># test our function with the mock client </span>
+</span></span><span style="display:flex;"><span>    result <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> get_user_data(mock_client, <span style="color:#bd93f9">1</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># verify the result and that the mock was called correctly</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> result <span style="color:#f92672">==</span> {<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Test User&#34;</span>}
-</span></span><span style="display:flex;"><span>    mock_client<span style="color:#f92672">.</span>fetch_user<span style="color:#f92672">.</span>assert_called_once_with(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># verify the result and that the mock was called correctly</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">assert</span> result <span style="color:#ff79c6">==</span> {<span style="color:#f1fa8c">&#34;id&#34;</span>: <span style="color:#bd93f9">1</span>, <span style="color:#f1fa8c">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;Test User&#34;</span>}
+</span></span><span style="display:flex;"><span>    mock_client<span style="color:#ff79c6">.</span>fetch_user<span style="color:#ff79c6">.</span>assert_called_once_with(<span style="color:#bd93f9">1</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@pytest.mark.asyncio</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_with_patch</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> patch(<span style="color:#e6db74">&#34;module_name.api_client&#34;</span>) <span style="color:#66d9ef">as</span> mock_client:
-</span></span><span style="display:flex;"><span>        mock_client<span style="color:#f92672">.</span>fetch_data <span style="color:#f92672">=</span> AsyncMock(return_value<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mocked data&#34;</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span>@pytest.mark.asyncio
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">test_with_patch</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">with</span> patch(<span style="color:#f1fa8c">&#34;module_name.api_client&#34;</span>) <span style="color:#ff79c6">as</span> mock_client:
+</span></span><span style="display:flex;"><span>        mock_client<span style="color:#ff79c6">.</span>fetch_data <span style="color:#ff79c6">=</span> AsyncMock(return_value<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;mocked data&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4"># ...</span>
 </span></span></code></pre></div><h3 id="test-asynchronous-context-managers">Test Asynchronous Context Managers<a hidden class="anchor" aria-hidden="true" href="#test-asynchronous-context-managers">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pytest
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> unittest.mock <span style="color:#f92672">import</span> AsyncMock 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> pytest
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> unittest.mock <span style="color:#ff79c6">import</span> AsyncMock 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@pytest.mark.asyncio</span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_async_context_manager</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># create a mock for an async context manager </span>
-</span></span><span style="display:flex;"><span>    mock_db <span style="color:#f92672">=</span> AsyncMock()
-</span></span><span style="display:flex;"><span>    mock_db<span style="color:#f92672">.</span>__aenter__<span style="color:#f92672">.</span>return_value <span style="color:#f92672">=</span> mock_db 
-</span></span><span style="display:flex;"><span>    mock_db<span style="color:#f92672">.</span>query<span style="color:#f92672">.</span>return_value <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;result1&#34;</span>, <span style="color:#e6db74">&#34;result2&#34;</span>]
+</span></span><span style="display:flex;"><span>@pytest.mark.asyncio 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">test_async_context_manager</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># create a mock for an async context manager </span>
+</span></span><span style="display:flex;"><span>    mock_db <span style="color:#ff79c6">=</span> AsyncMock()
+</span></span><span style="display:flex;"><span>    mock_db<span style="color:#ff79c6">.</span>__aenter__<span style="color:#ff79c6">.</span>return_value <span style="color:#ff79c6">=</span> mock_db 
+</span></span><span style="display:flex;"><span>    mock_db<span style="color:#ff79c6">.</span>query<span style="color:#ff79c6">.</span>return_value <span style="color:#ff79c6">=</span> [<span style="color:#f1fa8c">&#34;result1&#34;</span>, <span style="color:#f1fa8c">&#34;result2&#34;</span>]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># use the mock in an async with statement </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> mock_db <span style="color:#66d9ef">as</span> db:
-</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> db<span style="color:#f92672">.</span>query(<span style="color:#e6db74">&#34;SELECT * FROM TABLE&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># use the mock in an async with statement </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> mock_db <span style="color:#ff79c6">as</span> db:
+</span></span><span style="display:flex;"><span>        result <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> db<span style="color:#ff79c6">.</span>query(<span style="color:#f1fa8c">&#34;SELECT * FROM TABLE&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># verify results</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> result <span style="color:#f92672">==</span> [<span style="color:#e6db74">&#34;result1&#34;</span>, <span style="color:#e6db74">&#34;result2&#34;</span>]
-</span></span><span style="display:flex;"><span>    mock_db<span style="color:#f92672">.</span>query<span style="color:#f92672">.</span>assert_called_once_with(<span style="color:#e6db74">&#34;SELECT * FROM TABLE&#34;</span>)
-</span></span><span style="display:flex;"><span>    mock_db<span style="color:#f92672">.</span>__aexit__<span style="color:#f92672">.</span>assert_called_once()
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># verify results</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">assert</span> result <span style="color:#ff79c6">==</span> [<span style="color:#f1fa8c">&#34;result1&#34;</span>, <span style="color:#f1fa8c">&#34;result2&#34;</span>]
+</span></span><span style="display:flex;"><span>    mock_db<span style="color:#ff79c6">.</span>query<span style="color:#ff79c6">.</span>assert_called_once_with(<span style="color:#f1fa8c">&#34;SELECT * FROM TABLE&#34;</span>)
+</span></span><span style="display:flex;"><span>    mock_db<span style="color:#ff79c6">.</span>__aexit__<span style="color:#ff79c6">.</span>assert_called_once()
 </span></span></code></pre></div><h2 id="ecosystem-integrations">Ecosystem Integrations<a hidden class="anchor" aria-hidden="true" href="#ecosystem-integrations">#</a></h2>
 <h2 id="working-with-http-requests-aiohttp">Working with HTTP Requests: <code>aiohttp</code><a hidden class="anchor" aria-hidden="true" href="#working-with-http-requests-aiohttp">#</a></h2>
 <p><code>aiohttp</code> is an asynchronous HTTP client/server framework built on top of asyncio, perfect for making non-blocking HTTP requests. Its key features include:</p>
@@ -869,66 +872,66 @@ Unlike traditional synchronous programming, where operations execute sequentiall
 <li>handles cookies, headers and authentication</li>
 <li>provides both client and server implementation</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio 
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> aiohttp 
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> aiohttp 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> time 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_url</span>(session, url):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> session<span style="color:#f92672">.</span>get(url) <span style="color:#66d9ef">as</span> response:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> response<span style="color:#f92672">.</span>text()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">fetch_url</span>(session, url):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> session<span style="color:#ff79c6">.</span>get(url) <span style="color:#ff79c6">as</span> response:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">await</span> response<span style="color:#ff79c6">.</span>text()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_all</span>(urls):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> aiohttp<span style="color:#f92672">.</span>ClientSession() <span style="color:#66d9ef">as</span> session:
-</span></span><span style="display:flex;"><span>        tasks <span style="color:#f92672">=</span> [fetch_url(session, url) <span style="color:#66d9ef">for</span> url <span style="color:#f92672">in</span> urls]
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>gather(<span style="color:#f92672">*</span>tasks)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">fetch_all</span>(urls):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> aiohttp<span style="color:#ff79c6">.</span>ClientSession() <span style="color:#ff79c6">as</span> session:
+</span></span><span style="display:flex;"><span>        tasks <span style="color:#ff79c6">=</span> [fetch_url(session, url) <span style="color:#ff79c6">for</span> url <span style="color:#ff79c6">in</span> urls]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>gather(<span style="color:#ff79c6">*</span>tasks)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    urls <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;https://example.com&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;https://python.org&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;https://docs.python.org&#34;</span>
+</span></span><span style="display:flex;"><span>    urls <span style="color:#ff79c6">=</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;https://example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;https://python.org&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;https://docs.python.org&#34;</span>
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    start <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>perf_counter()
-</span></span><span style="display:flex;"><span>    results <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> fetch_all(urls)
-</span></span><span style="display:flex;"><span>    end <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>perf_counter()
+</span></span><span style="display:flex;"><span>    start <span style="color:#ff79c6">=</span> time<span style="color:#ff79c6">.</span>perf_counter()
+</span></span><span style="display:flex;"><span>    results <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> fetch_all(urls)
+</span></span><span style="display:flex;"><span>    end <span style="color:#ff79c6">=</span> time<span style="color:#ff79c6">.</span>perf_counter()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Fetched </span><span style="color:#e6db74">{</span>len(results)<span style="color:#e6db74">}</span><span style="color:#e6db74"> sites in </span><span style="color:#e6db74">{</span>end<span style="color:#f92672">-</span>start<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds&#34;</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;First 100 chars of each: </span><span style="color:#e6db74">{</span>[r[:<span style="color:#ae81ff">100</span>] <span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> results]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Fetched </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">len</span>(results)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> sites in </span><span style="color:#f1fa8c">{</span>end<span style="color:#ff79c6">-</span>start<span style="color:#f1fa8c">:</span><span style="color:#f1fa8c">.2f</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> seconds&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;First 100 chars of each: </span><span style="color:#f1fa8c">{</span>[r[:<span style="color:#bd93f9">100</span>] <span style="color:#ff79c6">for</span> r <span style="color:#ff79c6">in</span> results]<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>asyncio<span style="color:#f92672">.</span>run(main())
+</span></span><span style="display:flex;"><span>asyncio<span style="color:#ff79c6">.</span>run(main())
 </span></span></code></pre></div><h2 id="asynchronous-file-operations-aiofiles">Asynchronous File Operations: <code>aiofiles</code><a hidden class="anchor" aria-hidden="true" href="#asynchronous-file-operations-aiofiles">#</a></h2>
 <p><code>aiofiles</code> provides asynchronous file I/O operations, allowing file operations to run without blocking the event loop. It is particularly useful when writing/reading large files, processing multiple files concurrently, working with files while maintaining UI responsiveness, and integrating file operations with other async I/O operations.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> aiofiles
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> asyncio
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> aiofiles
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_large_file</span>(filename):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> aiofiles<span style="color:#f92672">.</span>open(filename, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> file:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> file<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">read_large_file</span>(filename):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> aiofiles<span style="color:#ff79c6">.</span>open(filename, <span style="color:#f1fa8c">&#39;r&#39;</span>) <span style="color:#ff79c6">as</span> file:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">await</span> file<span style="color:#ff79c6">.</span>read()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">write_data</span>(filename, data):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> aiofiles<span style="color:#f92672">.</span>open(filename, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> file:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> file<span style="color:#f92672">.</span>write(data)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">write_data</span>(filename, data):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">async</span> <span style="color:#ff79c6">with</span> aiofiles<span style="color:#ff79c6">.</span>open(filename, <span style="color:#f1fa8c">&#39;w&#39;</span>) <span style="color:#ff79c6">as</span> file:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">await</span> file<span style="color:#ff79c6">.</span>write(data)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">process_files</span>(filenames):
-</span></span><span style="display:flex;"><span>    tasks <span style="color:#f92672">=</span> [read_large_file(filename) <span style="color:#66d9ef">for</span> filename <span style="color:#f92672">in</span> filenames]
-</span></span><span style="display:flex;"><span>    contents <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>gather(<span style="color:#f92672">*</span>tasks)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">process_files</span>(filenames):
+</span></span><span style="display:flex;"><span>    tasks <span style="color:#ff79c6">=</span> [read_large_file(filename) <span style="color:#ff79c6">for</span> filename <span style="color:#ff79c6">in</span> filenames]
+</span></span><span style="display:flex;"><span>    contents <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>gather(<span style="color:#ff79c6">*</span>tasks)
 </span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Process contents...</span>
-</span></span><span style="display:flex;"><span>    results <span style="color:#f92672">=</span> [content<span style="color:#f92672">.</span>upper() <span style="color:#66d9ef">for</span> content <span style="color:#f92672">in</span> contents]<span style="color:#f92672">****</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># Process contents...</span>
+</span></span><span style="display:flex;"><span>    results <span style="color:#ff79c6">=</span> [content<span style="color:#ff79c6">.</span>upper() <span style="color:#ff79c6">for</span> content <span style="color:#ff79c6">in</span> contents]<span style="color:#ff79c6">****</span>
 </span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Write results</span>
-</span></span><span style="display:flex;"><span>    write_tasks <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>        write_data(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;processed_</span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>, result) 
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> filename, result <span style="color:#f92672">in</span> zip(filenames, results)
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># Write results</span>
+</span></span><span style="display:flex;"><span>    write_tasks <span style="color:#ff79c6">=</span> [
+</span></span><span style="display:flex;"><span>        write_data(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;processed_</span><span style="color:#f1fa8c">{</span>filename<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>, result) 
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> filename, result <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">zip</span>(filenames, results)
 </span></span><span style="display:flex;"><span>    ]
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>gather(<span style="color:#f92672">*</span>write_tasks)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> asyncio<span style="color:#ff79c6">.</span>gather(<span style="color:#ff79c6">*</span>write_tasks)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> process_files([<span style="color:#e6db74">&#39;file1.txt&#39;</span>, <span style="color:#e6db74">&#39;file2.txt&#39;</span>, <span style="color:#e6db74">&#39;file3.txt&#39;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> process_files([<span style="color:#f1fa8c">&#39;file1.txt&#39;</span>, <span style="color:#f1fa8c">&#39;file2.txt&#39;</span>, <span style="color:#f1fa8c">&#39;file3.txt&#39;</span>])
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>asyncio<span style="color:#f92672">.</span>run(main())
+</span></span><span style="display:flex;"><span>asyncio<span style="color:#ff79c6">.</span>run(main())
 </span></span></code></pre></div><h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
 <p>AsyncIO has transformed Python&rsquo;s approach to handling I/O-bound operations, offering a simple yet powerful approach to concurrency without the complexity of traditional multithreading. Its core advantages - improved responsiveness, maximized resource utilization, and elegant syntax - make it particularly well-suited for AI application development. The extensive AsyncIO ecosystem, with libraries for HTTP requests, file operations, and database access, extends these capabilities across all I/O domains. As AI services continue to expand in importance and complexity, AsyncIO&rsquo;s role will only grow, becoming a fundamental pattern for developers building responsive, scalable applications in an increasingly API-driven landscape.</p>
 
