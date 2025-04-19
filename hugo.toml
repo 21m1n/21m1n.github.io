@@ -8,12 +8,12 @@ Title = "Hi there 👋"
 Content = "My name is Zimin, and I talk about #tech, #art, and random things"
 
 [[params.socialIcons]]
-name = "<platform>"
-url = "<link>"
+name = "github"
+url = "https://github.com/21m1n"
 
 [[params.socialIcons]]
-name = "<platform 2>"
-url = "<link2>"
+name = "linkedin"
+url = "https://www.linkedin.com/in/zi-min/"
 
 
 [outputs]
@@ -28,3 +28,14 @@ disableHLJS = true
     lineNos = false
     noClasses = true
     codeFences = true
+
+[params]
+ShowPostNavLinks = true
+ShowToc = true
+TocOpen = true
+ShowBreadCrumbs = true
+ShowReadingTime = true
+ShowShareButtons = true
+ShowWordCount = true
+comments = true
+searchHidden = false

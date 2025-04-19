@@ -3,9 +3,6 @@
   line-height: 1.8rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Spectral', serif;
-}
 
 code {
   text-size-adjust: 100%;
@@ -13,3 +10,6 @@ code {
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 } */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Spectral', serif;
+}

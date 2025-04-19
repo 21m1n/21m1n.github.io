@@ -21,10 +21,7 @@
       <link>http://localhost:1313/posts/dspy/</link>
       <pubDate>Thu, 30 Jan 2025 23:46:40 +0800</pubDate>
       <guid>http://localhost:1313/posts/dspy/</guid>
-      <description>&lt;p&gt;$$
-\alpha = \sqrt{4}
-$$&lt;/p&gt;
-&lt;p&gt;One of the main challenges we face while developing AI applications is prompt engineering. As developers, we often find ourselves in a cycle of trial and error: writing a prompt, testing it against various inputs, analyzing the outputs, and then tweaking the prompt based on the results. This iterative process requires meticulous tracking of prompt versions, understanding how different phrasings affect model behavior, and maintaining consistency across similar tasks. Managing this complexity becomes even more challenging when we need to chain multiple prompts together or handle different edge cases. This approach, while workable for simple applications, becomes increasingly unsustainable as applications grow in complexity.&lt;/p&gt;</description>
+      <description>&lt;p&gt;One of the main challenges we face while developing AI applications is prompt engineering. As developers, we often find ourselves in a cycle of trial and error: writing a prompt, testing it against various inputs, analyzing the outputs, and then tweaking the prompt based on the results. This iterative process requires meticulous tracking of prompt versions, understanding how different phrasings affect model behavior, and maintaining consistency across similar tasks. Managing this complexity becomes even more challenging when we need to chain multiple prompts together or handle different edge cases. This approach, while workable for simple applications, becomes increasingly unsustainable as applications grow in complexity.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
