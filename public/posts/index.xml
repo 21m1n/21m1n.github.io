@@ -6,8 +6,17 @@
     <description>Recent content in Posts on De Omnibus Dubitandum</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Apr 2025 07:19:42 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 20 Apr 2025 09:36:11 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Philosophy of Suffering in Eisenberg&#39;s &#39;A Real Pain&#39;</title>
+      <link>http://localhost:1313/posts/a_real_pain/</link>
+      <pubDate>Sun, 20 Apr 2025 09:36:11 +0800</pubDate>
+      <guid>http://localhost:1313/posts/a_real_pain/</guid>
+      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://static1.colliderimages.com/wordpress/wp-content/uploads/2024/12/a-real-pain_hhmwck.jpg?q=70&amp;fit=crop&amp;w=1140&amp;h=&amp;dpr=1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;“A Real Pain” explores two contrasting approaches to suffering through the journey of cousins David (Jesse Eisenberg) and Benji (Kieran Culkin) in Poland. Eisenberg’s sophomore directorial effort presents a profound question: which approach truly represents “the real pain”? Is it more painful to forget or to remember, to adapt or to resist?&lt;/p&gt;
+&lt;p&gt;As the cousins travel through Poland to honor their Holocaust-survivor grandmother, they traverse not just physical landscape but also emotional terrain. The dynamic becomes particularly evident when he deliberately misses their train stop out of discomfort with “traveling first class in Poland as Jews”, revealing his profound survivor’s guilt, while David attempts to maintain decorum. Eisenberg’s retrained directing style allows these tensions to unfold organically through patient long takes and natural dialogue, rather than forcing emotional climaxes.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Asyncio in Python</title>
       <link>http://localhost:1313/posts/asyncio/</link>
